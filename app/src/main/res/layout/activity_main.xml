@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clipToPadding="false"
+        android:background="@color/colorPutih">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorPutih">
+
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                android:clipToPadding="false"
+                android:background="@color/colorPutih">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@color/colorPutih"
+                    android:elevation="5dp"
+                    android:gravity="center">
+
+                    <include layout="@layout/toolbar"/>
+
+                </LinearLayout>
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp"
+                                android:background="@color/colorSc" />
+
+                            <TextView
+                                android:id="@+id/tvJudul"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Enkripsi"
+                                android:textStyle="bold"
+                                android:textSize="25sp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginBottom="10dp"
+                                android:textColor="@color/colorPutih"/>
+
+                            <Button
+                                android:layout_width="120dp"
+                                android:layout_height="35dp"
+                                android:text="Dekripsi"
+                                android:textSize="16sp"
+                                android:id="@+id/btChange"
+                                android:background="@drawable/hint_background"
+                                android:textColor="@color/colorPutih"
+                                android:onClick="change"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginTop="10dp"/>
+
+                            <LinearLayout
+                                android:layout_below="@+id/tvJudul"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <android.support.v7.widget.CardView
+                                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="245dp"
+                                    card_view:cardCornerRadius="10dp"
+                                    card_view:cardElevation="5dp"
+                                    card_view:cardBackgroundColor="#fff"
+                                    android:layout_marginTop="-10dp"
+                                    android:foreground="?android:attr/selectableItemBackground"
+                                    card_view:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical"
+                                        android:padding="20dp">
+
+                                        <TextView
+                                            android:id="@+id/tvInputText"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Plain Teks"
+                                            android:textColor="@color/colorHitam3"
+                                            android:textSize="18sp"/>
+
+                                        <TextView
+                                            android:id="@+id/tvInputDeskText"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Teks berisi informasi yang akan dienkripsi"
+                                            android:layout_marginTop="5dp"
+                                            android:textColor="@color/colorKey"
+                                            android:textSize="14sp"/>
+
+                                        <ScrollView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="100dp"
+                                            android:layout_marginTop="10dp">
+                                            <EditText
+                                                android:id="@+id/etInput"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="100dp"
+                                                android:textSize="15sp"
+                                                android:textColor="@color/colorKey"
+                                                android:background="@drawable/garis"
+                                                android:paddingBottom="6dp"
+                                                android:paddingTop="6dp"
+                                                android:paddingStart="4dp"
+                                                android:lines="4"
+                                                android:overScrollMode="always"
+                                                android:scrollbarStyle="insideInset"
+                                                android:scrollbars="vertical"
+                                                android:gravity="top|start"
+                                                android:inputType="textMultiLine|textCapWords"/>
+                                        </ScrollView>
+
+                                        <Button
+                                            android:layout_width="140dp"
+                                            android:layout_height="30dp"
+                                            android:text="Pilih File"
+                                            android:textSize="14sp"
+                                            android:background="@drawable/rounded_bg"
+                                            android:textColor="@color/colorSc"
+                                            android:onClick="pilihInput"
+                                            style="?android:attr/borderlessButtonStyle"/>
+                                    </LinearLayout>
+
+                                </android.support.v7.widget.CardView>
+
+                                <RelativeLayout
+                                    android:layout_marginTop="20dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="60dp">
+
+                                    <Button
+                                        android:layout_width="140dp"
+                                        android:layout_height="50dp"
+                                        android:text="Buat Kunci"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:background="@drawable/rounded_bg"
+                                        android:textColor="@color/colorSc"
+                                        android:onClick="buatKunci"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginBottom="10dp"
+                                        style="?android:attr/borderlessButtonStyle"/>
+
+                                    <TextView
+                                        android:gravity="center_vertical"
+                                        android:layout_width="190dp"
+                                        android:layout_height="match_parent"
+                                        android:text="Pilih 'Buat Kunci', apabila belum memiliki kunci."
+                                        android:textColor="@color/colorKey"
+                                        android:textSize="14sp"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_marginEnd="10dp"/>
+
+                                </RelativeLayout>
+
+                                <android.support.v7.widget.CardView
+                                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="245dp"
+                                    card_view:cardCornerRadius="10dp"
+                                    card_view:cardElevation="5dp"
+                                    card_view:cardBackgroundColor="#fff"
+                                    android:foreground="?android:attr/selectableItemBackground"
+                                    card_view:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical"
+                                        android:padding="20dp">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Kunci Publik"
+                                            android:textColor="@color/colorHitam3"
+                                            android:textSize="18sp"/>
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Kunci bersifat tidak rahasia untuk proses enkripsi"
+                                            android:layout_marginTop="5dp"
+                                            android:textColor="@color/colorKey"
+                                            android:textSize="14sp"/>
+
+                                        <ScrollView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="100dp"
+                                            android:layout_marginTop="10dp">
+                                            <EditText
+                                                android:id="@+id/etPublik"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="100dp"
+                                                android:textSize="14sp"
+                                                android:textColor="@color/colorKey"
+                                                android:background="@drawable/garis"
+                                                android:paddingBottom="6dp"
+                                                android:paddingTop="6dp"
+                                                android:paddingStart="4dp"
+                                                android:lines="5"
+                                                android:overScrollMode="always"
+                                                android:scrollbarStyle="insideInset"
+                                                android:scrollbars="vertical"
+                                                android:gravity="top|start"
+                                                android:inputType="textMultiLine|textCapWords"
+                                                android:typeface="monospace"/>
+                                        </ScrollView>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="35dp">
+                                            <Button
+                                                android:layout_width="140dp"
+                                                android:layout_height="30dp"
+                                                android:text="Pilih Kunci Dari File"
+                                                android:textSize="14sp"
+                                                android:background="@drawable/rounded_bg"
+                                                android:textColor="@color/colorSc"
+                                                android:layout_marginEnd="5dp"
+                                                android:layout_alignParentStart="true"
+                                                android:onClick="pilihPublik"
+                                                style="?android:attr/borderlessButtonStyle"/>
+
+                                            <Button
+                                                android:layout_width="140dp"
+                                                android:layout_height="30dp"
+                                                android:text="Simpan Kunci File"
+                                                android:textSize="14sp"
+                                                android:background="@drawable/rounded_bg"
+                                                android:textColor="@color/colorSc"
+                                                android:layout_marginStart="5dp"
+                                                android:layout_alignParentEnd="true"
+                                                android:onClick="simpanPublik"
+                                                style="?android:attr/borderlessButtonStyle"/>
+                                        </RelativeLayout>
+
+
+                                    </LinearLayout>
+
+                                </android.support.v7.widget.CardView>
+
+                                <android.support.v7.widget.CardView
+                                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="245dp"
+                                    android:layout_marginTop="-10dp"
+                                    card_view:cardCornerRadius="10dp"
+                                    card_view:cardElevation="5dp"
+                                    card_view:cardBackgroundColor="#fff"
+                                    android:foreground="?android:attr/selectableItemBackground"
+                                    card_view:cardUseCompatPadding="true">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical"
+                                        android:padding="20dp">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Kunci Privat"
+                                            android:textColor="@color/colorHitam3"
+                                            android:textSize="18sp"/>
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Kunci bersifat rahasia untuk proses dekripsi"
+                                            android:layout_marginTop="5dp"
+                                            android:textColor="@color/colorKey"
+                                            android:textSize="14sp"/>
+
+                                        <ScrollView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="100dp"
+                                            android:layout_marginTop="10dp">
+                                            <EditText
+                                                android:id="@+id/etPrivat"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="100dp"
+                                                android:textSize="14sp"
+                                                android:textColor="@color/colorKey"
+                                                android:background="@drawable/garis"
+                                                android:paddingBottom="6dp"
+                                                android:paddingTop="6dp"
+                                                android:paddingStart="4dp"
+                                                android:lines="5"
+                                                android:overScrollMode="always"
+                                                android:scrollbarStyle="insideInset"
+                                                android:scrollbars="vertical"
+                                                android:gravity="top|start"
+                                                android:inputType="textMultiLine|textCapWords"
+                                                android:typeface="monospace"/>
+                                        </ScrollView>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="35dp">
+                                            <Button
+                                                android:layout_width="140dp"
+                                                android:layout_height="30dp"
+                                                android:text="Pilih Kunci Dari File"
+                                                android:textSize="14sp"
+                                                android:background="@drawable/rounded_bg"
+                                                android:textColor="@color/colorSc"
+                                                android:layout_marginEnd="5dp"
+                                                android:layout_alignParentStart="true"
+                                                android:onClick="pilihPrivat"
+                                                style="?android:attr/borderlessButtonStyle"/>
+
+                                            <Button
+                                                android:layout_width="140dp"
+                                                android:layout_height="30dp"
+                                                android:text="Simpan Kunci File"
+                                                android:textSize="14sp"
+                                                android:background="@drawable/rounded_bg"
+                                                android:textColor="@color/colorSc"
+                                                android:layout_marginStart="5dp"
+                                                android:layout_alignParentEnd="true"
+                                                android:onClick="simpanPrivat"
+                                                style="?android:attr/borderlessButtonStyle"/>
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+
+                                </android.support.v7.widget.CardView>
+
+                                <Button
+                                    android:id="@+id/btProses"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:text="Proses"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    android:background="@drawable/rounded_bg_2"
+                                    android:textColor="@color/colorPutih"
+                                    android:elevation="5dp"
+                                    android:layout_margin="10dp"
+                                    android:onClick="proses"/>
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+            </android.support.design.widget.AppBarLayout>
+
+        </LinearLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+</android.support.v4.widget.DrawerLayout>
