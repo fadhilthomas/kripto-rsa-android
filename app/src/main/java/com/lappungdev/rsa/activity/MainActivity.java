@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements FileDialog.OnFile
     private TextView tvJudulHasil;
     private TextView tvInput;
     private TextView tvInputDesk;
+    private TextView tvWaktuProses;
     private EditText etPublik;
     private EditText etPrivat;
     private EditText etInput;
@@ -184,16 +185,26 @@ public class MainActivity extends AppCompatActivity implements FileDialog.OnFile
                 b.setTextColor(getResources().getColor(R.color.colorSc));
                 b.setTypeface(b.getTypeface(), Typeface.BOLD);
             }else {
+                long startTime = System.currentTimeMillis();
+                int jumlahKarakter = 0;
+                long endTime = 0;
                 if (mode.contains("Enkripsi")) {
                     result = encrypt(input, restorePublic(etPublik.getText().toString()));
+                    jumlahKarakter = etInput.getText().length();
+                    endTime = System.currentTimeMillis();
                 } else {
                     result = decrypt(input, restorePrivate(etPrivat.getText().toString()));
+                    jumlahKarakter = result.length();
+                    endTime = System.currentTimeMillis();
                 }
                 alertDialog = new Dialog(this);
                 alertDialog.setContentView(R.layout.result);
                 etHasil = alertDialog.findViewById(R.id.etHasil);
                 tvJudulHasil = alertDialog.findViewById(R.id.tvJudulHasil);
+                tvWaktuProses = alertDialog.findViewById(R.id.tvWaktuProses);
                 tvJudulHasil.setText("Hasil " + mode);
+                long timeProses = (endTime - startTime);
+                tvWaktuProses.setText(mode + " " + jumlahKarakter +" karakter dalam waktu " + timeProses + " ms");
                 Button btSalin = alertDialog.findViewById(R.id.btSalin);
                 Button btSimpanHasil = alertDialog.findViewById(R.id.btSimpanHasil);
                 btSalin.setOnClickListener(new View.OnClickListener() {
@@ -271,7 +282,7 @@ public class MainActivity extends AppCompatActivity implements FileDialog.OnFile
         etInput = findViewById(R.id.etInput);
         try {
             if(dialog.getTag().contains(OpenFileDialog.class.getName())) {
-                Snackbar.make(findViewById(android.R.id.content), "File kunci berhasil dipilih", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(findViewById(android.R.id.content), "File berhasil dipilih", Snackbar.LENGTH_LONG).show();
                 String input = FileUtils.readFileToString(file.getAbsoluteFile());
                 if (dialog.getTag().contains("Public")) {
                     etPublik.setText(input);
